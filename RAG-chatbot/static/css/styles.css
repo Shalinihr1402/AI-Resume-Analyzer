@@ -1,0 +1,153 @@
+/* Light‑mode premium design */
+:root {
+    --font-family: 'Inter', sans-serif;
+    --primary-hue: 210; /* blue‑ish */
+    --primary-sat: 60%;
+    --primary-light: 95%;
+    --primary-dark: 30%;
+    --bg-gradient: linear-gradient(135deg, hsl(var(--primary-hue), var(--primary-sat), 98%), hsl(var(--primary-hue), var(--primary-sat), 85%));
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --accent-color: hsl(var(--primary-hue), var(--primary-sat), var(--primary-dark));
+    --text-color: #212529;
+    --muted-color: #555;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    color: var(--accent-color);
+    margin: 0.5rem 0;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    max-width: 800px;
+}
+
+.upload-section, .qa-section {
+    width: 100%;
+    max-width: 720px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.result {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+input[type="file"] {
+    flex: 1 1 auto;
+    background: #fff;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 0.4rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+input[type="text"] {
+    flex: 1 1 auto;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+button {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: hsl(var(--primary-hue), var(--primary-sat), 20%);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.chat-box {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-right: 0.5rem;
+}
+
+.message {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    line-height: 1.4;
+    max-width: 85%;
+    word-wrap: break-word;
+    animation: slideUp 0.4s ease forwards;
+}
+
+.message.user {
+    align-self: flex-end;
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background: var(--card-bg);
+    border: 1px solid #e0e0e0;
+    color: var(--text-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .upload-section, .qa-section {
+        padding: 1.5rem;
+    }
+    input[type="file"], input[type="text"] {
+        width: 100%;
+    }
+    button { width: 100%; }
+}
